@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Retrieve Secret
         env:
-          repo_secret: ${{ secret.MY_SECRET }}
+          repo_secret: ${{ secrets.MY_SECRET }}
         run: |
           if [[ $repo_secret == "repo secret" ]]; then
             echo "Sucessfully got repo secret value: $repo_secret"
@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: Retrieve Secret
         env:
-          env_secret: ${{ secret.MY_SECRET }}
+          env_secret: ${{ secrets.MY_SECRET }}
         run: |
           if [[ $env_secret == "env secret" ]]; then
             echo "Sucessfully got repo secret value: $env_secret"
