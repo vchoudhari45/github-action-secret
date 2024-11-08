@@ -1,0 +1,29 @@
+name: Getting Secret within Actions
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  get-repo-secret:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Retrieve Secret
+        env:
+          repo_secret: ${{ secret.MY_SECRET }}
+        run: |
+          if [[ $repo_secret == "repo secret" ]]; then
+            echo "Sucessfully got repo secret value: $repo_secret"
+          fi
+
+  get-env-secret:
+    environment: dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: Retrieve Secret
+        env:
+          env_secret: ${{ secret.MY_SECRET }}
+        run: |
+          if [[ $env_secret == "env secret" ]]; then
+            echo "Sucessfully got repo secret value: $env_secret"
+          fi
